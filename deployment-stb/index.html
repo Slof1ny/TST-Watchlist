@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Watchlist - Huga</title>
+  <style>
+/* --- Inlined styles.css (premium dark) --- */
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --primary-color:#d4af37; --primary-dark:#b8942f; --primary-light:#f0d97a; --secondary-color:#8b7355; --background:#0a0a0a; --background-alt:#111111; --surface:#1a1a1a; --surface-light:#242424; --surface-hover:#2d2d2d; --text-primary:#f5f5f5; --text-secondary:#b8b8b8; --text-muted:#6b6b6b; --success:#2dd4bf; --error:#f87171; --warning:#fbbf24; --accent-gradient:linear-gradient(135deg,#d4af37 0%,#f0d97a 100%); --border-color:#2d2d2d; }
+body { font-family:'Inter','Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:var(--background); color:var(--text-primary); line-height:1.6; background-image:radial-gradient(circle at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 50%); }
+.navbar { background:rgba(26,26,26,0.95); backdrop-filter:blur(10px); padding:1rem 0; box-shadow:0 2px 20px rgba(0,0,0,0.5); border-bottom:1px solid var(--border-color); position:sticky; top:0; z-index:100; }
+.navbar .container { display:flex; justify-content:space-between; align-items:center; }
+.nav-brand h1 { font-size:1.5rem; background:var(--accent-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700; letter-spacing:-0.5px; }
+.nav-user { display:flex; align-items:center; gap:1rem; }
+.nav-user span { color:var(--text-secondary); }
+.container { max-width:1200px; margin:0 auto; padding:0 1.5rem; }
+.auth-section { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem 1rem; background-image:radial-gradient(circle at 20% 30%, rgba(212,175,55,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(212,175,55,0.06) 0%, transparent 40%); }
+.auth-container { background:var(--surface); border-radius:16px; padding:3rem 2.5rem; width:100%; max-width:480px; box-shadow:0 8px 40px rgba(0,0,0,0.6), 0 0 1px rgba(212,175,55,0.3); border:1px solid var(--border-color); position:relative; overflow:hidden; }
+.auth-tabs { display:flex; gap:.5rem; margin-bottom:2rem; }
+.tab-btn { flex:1; padding:.875rem; background:transparent; color:var(--text-muted); border:1px solid var(--border-color); border-radius:10px; cursor:pointer; font-size:1rem; font-weight:600; transition:all .3s ease; }
+.tab-btn.active { background:var(--accent-gradient); color:#0a0a0a; border-color:var(--primary-color); box-shadow:0 4px 16px rgba(212,175,55,.3); }
+.tab-btn:hover:not(.active) { background:var(--surface-light); border-color:var(--surface-hover); color:var(--text-secondary); transform:translateY(-1px); }
+.auth-form{display:none;} .auth-form.active{display:block;}
+.auth-form h2 { margin-bottom:.5rem; color:var(--text-primary); font-size:1.75rem; font-weight:700; }
+.auth-desc { color:var(--text-muted); margin-bottom:1.5rem; }
+.input-field { width:100%; padding:1rem 1.25rem; background:var(--background-alt); border:1px solid var(--border-color); border-radius:10px; color:var(--text-primary); font-size:1rem; margin-bottom:1rem; transition:all .3s ease; }
+.input-field:focus { outline:none; border-color:var(--primary-color); background:var(--surface-light); box-shadow:0 0 0 3px rgba(212,175,55,.1); }
+.input-field::placeholder{color:var(--text-muted);} 
+.btn-primary,.btn-secondary,.btn-add-watchlist { padding:.875rem 1.5rem; border:none; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; transition:all .3s ease; width:100%; }
+.btn-primary{ background:var(--accent-gradient); color:#0a0a0a; font-weight:700; box-shadow:0 4px 16px rgba(212,175,55,.2);} 
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 6px 24px rgba(212,175,55,.4); filter:brightness(1.1);} 
+.btn-secondary{ background:var(--surface-light); color:var(--text-primary); border:1px solid var(--border-color);} 
+.btn-secondary:hover{ background:var(--surface-hover); border-color:var(--primary-color); color:var(--primary-light);} 
+.btn-add-watchlist{ background:var(--success); color:#0a0a0a; margin-top:1rem; font-weight:700; box-shadow:0 4px 16px rgba(45,212,191,.2);} 
+.btn-add-watchlist:hover{ background:#14b8a6; transform:translateY(-2px); box-shadow:0 6px 24px rgba(45,212,191,.4);} 
+.error-message{ color:var(--error); font-size:.875rem; margin-top:.5rem; } .success-message{ color:var(--success); font-size:.875rem; margin-top:.5rem; }
+.main-content{ padding:2rem 0; min-height:calc(100vh - 80px);} 
+.content-tabs{ display:flex; gap:1rem; margin-bottom:2rem; } 
+.content-tab-btn{ padding:1rem 2rem; background:var(--surface); color:var(--text-secondary); border:1px solid var(--border-color); border-radius:12px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:all .3s ease; } 
+.content-tab-btn.active{ background:var(--accent-gradient); color:#0a0a0a; border-color:var(--primary-color); box-shadow:0 4px 16px rgba(212,175,55,.3);} 
+.content-tab-btn:hover:not(.active){ background:var(--surface-light); transform:translateY(-2px);} 
+.content-section{display:none;} .content-section.active{display:block;} 
+.section-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem; } 
+.section-header h2{ font-size:2rem; color:var(--text-primary);} 
+.search-box{ flex:1; max-width:400px;} .search-box .input-field{ margin-bottom:0; }
+.movie-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2rem; margin-bottom:2rem; }
+.movie-card{ background:var(--surface); border-radius:12px; overflow:hidden; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; box-shadow:0 4px 16px rgba(0,0,0,.4); border:1px solid var(--border-color);} 
+.movie-card:hover{ transform:translateY(-8px); box-shadow:0 12px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(212,175,55,.3); border-color:var(--primary-color);} 
+.movie-poster{ width:100%; height:420px; overflow:hidden; background:var(--surface-light); position:relative;} 
+.movie-poster img{ width:100%; height:100%; object-fit:cover;} 
+.movie-info{ padding:1.5rem;} 
+.movie-title{ font-size:1.25rem; margin-bottom:.5rem; color:var(--text-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;} 
+.movie-year,.movie-director{ font-size:.875rem; color:var(--text-muted); margin-bottom:.5rem;} 
+.movie-rating{ display:flex; align-items:center; gap:.5rem; margin:.75rem 0;} 
+.rating-star{ font-size:1.25rem;} 
+.rating-value{ font-size:1.25rem; font-weight:700; color:var(--primary-color);} 
+.movie-description{ font-size:.875rem; color:var(--text-secondary); line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:1rem;} 
+.watchlist-badge{ display:inline-block; background:var(--accent-gradient); color:#0a0a0a; padding:.5rem 1rem; border-radius:20px; font-size:.875rem; font-weight:700; margin-top:1rem; box-shadow:0 2px 8px rgba(212,175,55,.3);} 
+.loading{ text-align:center; padding:3rem; color:var(--text-muted); font-size:1.125rem;} 
+.empty-state{ text-align:center; padding:4rem 2rem; color:var(--text-muted); font-size:1.125rem; background:var(--surface); border-radius:12px;} 
+.toast{ position:fixed; bottom:2rem; right:2rem; background:var(--surface); color:var(--text-primary); padding:1rem 1.5rem; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,.5); transform:translateY(200px); opacity:0; transition:all .3s ease; z-index:1000; max-width:400px;} 
+.toast.show{ transform:translateY(0); opacity:1;} 
+.toast.success{ border-left:4px solid var(--success);} 
+.toast.error{ border-left:4px solid var(--error);} 
+.modal{ display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,.8); animation:fadeIn .3s ease;} 
+@keyframes fadeIn{ from{opacity:0;} to{opacity:1;} } 
+.modal-content{ background-color:var(--surface); margin:2% auto; padding:0; border-radius:16px; width:90%; max-width:800px; box-shadow:0 12px 60px rgba(0,0,0,.8); border:1px solid var(--border-color); animation:slideDown .3s ease;} 
+@keyframes slideDown{ from{ transform:translateY(-50px); opacity:0;} to{ transform:translateY(0); opacity:1;} } 
+.modal-header{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem 2rem; border-bottom:1px solid var(--surface-light);} 
+.modal-header h2{ margin:0; color:var(--text-primary); font-size:1.5rem;} 
+.modal-close{ background:none; border:none; color:var(--text-muted); font-size:2rem; cursor:pointer; transition:color .3s ease; line-height:1; padding:0; width:2rem; height:2rem;} 
+.modal-close:hover{ color:var(--text-primary);} 
+.modal-body{ padding:2rem; max-height:calc(100vh - 200px); overflow-y:auto;} 
+.modal-movie-info{ margin-bottom:2rem;} 
+.modal-movie-details{ display:flex; gap:1.5rem; background:var(--surface-light); padding:1.5rem; border-radius:8px;} 
+.modal-movie-details img{ width:120px; height:180px; object-fit:cover; border-radius:8px;} 
+.modal-movie-text h3{ margin:0 0 .5rem 0; color:var(--text-primary);} 
+.modal-movie-text p{ margin:.25rem 0; color:var(--text-muted); font-size:.9rem;} 
+.add-review-section{ background:var(--surface-light); padding:1.5rem; border-radius:8px; margin-bottom:2rem;} 
+.add-review-section h3{ margin:0 0 1rem 0; color:var(--text-primary);} 
+.rating-input{ margin-bottom:1rem;} 
+.rating-input label{ display:block; margin-bottom:.5rem; color:var(--text-secondary); font-weight:600;} 
+.add-review-section textarea{ resize:vertical; min-height:100px;} 
+.reviews-section{ margin-top:2rem;} 
+.reviews-section h3{ margin:0 0 1.5rem 0; color:var(--text-primary);} 
+.reviews-list{ display:flex; flex-direction:column; gap:1rem;} 
+.review-card{ background:var(--surface-light); padding:1.5rem; border-radius:10px; border-left:3px solid var(--primary-color); border:1px solid var(--border-color); border-left-width:3px;} 
+.review-header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem;} 
+.review-user{ display:flex; flex-direction:column; gap:.25rem;} 
+.review-username{ font-weight:600; color:var(--text-primary); font-size:1rem;} 
+.review-date{ font-size:.8rem; color:var(--text-muted);} 
+.review-rating{ display:flex; align-items:center; gap:.5rem; background:var(--background); padding:.5rem 1rem; border-radius:20px;} 
+.review-rating .rating-star{ font-size:1rem;} 
+.review-rating .rating-value{ font-size:1rem; font-weight:700; color:var(--primary-color);} 
+.review-comment{ color:var(--text-secondary); line-height:1.6; font-size:.95rem;} 
+.review-overlay{ position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.7); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s ease;} 
+.movie-poster:hover .review-overlay{ opacity:1; } 
+.review-icon{ color:#fff; font-size:1.1rem; font-weight:600; text-align:center; padding:1rem; }
+@media (max-width:768px){ .navbar .container{ flex-direction:column; gap:1rem;} .nav-user{ width:100%; justify-content:center;} .content-tabs{ flex-direction:column;} .section-header{ flex-direction:column; align-items:flex-start;} .search-box{ width:100%; max-width:100%; } .movie-grid{ grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.5rem;} .toast{ bottom:1rem; right:1rem; left:1rem;} .modal-content{ width:95%; margin:5% auto;} .modal-body{ padding:1.5rem;} .modal-movie-details{ flex-direction:column; align-items:center; text-align:center;} .modal-movie-details img{ width:150px; height:225px;} .review-header{ flex-direction:column; gap:.75rem; align-items:flex-start; } }
+@media (max-width:480px){ .movie-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand"><h1>🎬 Movie Watchlist</h1></div>
+      <div class="nav-user" id="navUser" style="display:none;">
+        <span id="userNameDisplay"></span>
+        <button onclick="logout()" class="btn-secondary">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="authSection" class="auth-section">
+    <div class="container">
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <button class="tab-btn active" onclick="showTab('login')">Login</button>
+          <button class="tab-btn" onclick="showTab('register')">Daftar</button>
+        </div>
+
+        <div id="loginForm" class="auth-form active">
+          <h2>Login</h2>
+          <p class="auth-desc">Masukkan nama Anda untuk login</p>
+          <input type="text" id="loginName" placeholder="Nama Anda" class="input-field" />
+          <button onclick="login()" class="btn-primary">Login</button>
+          <div id="loginError" class="error-message"></div>
+        </div>
+
+        <div id="registerForm" class="auth-form">
+          <h2>Daftar Akun Baru</h2>
+          <p class="auth-desc">Masukkan nama Anda untuk mendaftar</p>
+          <input type="text" id="registerName" placeholder="Nama Anda" class="input-field" />
+          <button onclick="register()" class="btn-primary">Daftar</button>
+          <div id="registerError" class="error-message"></div>
+          <div id="registerSuccess" class="success-message"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainContent" class="main-content" style="display:none;">
+    <div class="container">
+      <div class="content-tabs">
+        <button class="content-tab-btn active" onclick="showContent('catalog')">📽️ Movie Catalog</button>
+        <button class="content-tab-btn" onclick="showContent('watchlist')">⭐ My Watchlist</button>
+      </div>
+
+      <div id="catalogSection" class="content-section active">
+        <div class="section-header">
+          <h2>Movie Catalog</h2>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search movies..." class="input-field" onkeyup="searchMovies()" />
+          </div>
+        </div>
+        <div id="movieGrid" class="movie-grid"></div>
+        <div id="movieLoading" class="loading">Loading movies...</div>
+        <div id="movieError" class="error-message"></div>
+      </div>
+
+      <div id="watchlistSection" class="content-section">
+        <div class="section-header">
+          <h2>My Watchlist</h2>
+          <button onclick="loadWatchlist()" class="btn-secondary">🔄 Refresh</button>
+        </div>
+        <div id="watchlistGrid" class="movie-grid"></div>
+        <div id="watchlistLoading" class="loading">Loading watchlist...</div>
+        <div id="watchlistError" class="error-message"></div>
+        <div id="watchlistEmpty" class="empty-state" style="display:none;">Your watchlist is empty. Add some movies from the catalog!</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <div id="reviewModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalMovieTitle">Movie Reviews</h2>
+        <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalMovieInfo" class="modal-movie-info"></div>
+        <div class="add-review-section">
+          <h3>Add Your Review</h3>
+          <div class="rating-input">
+            <label>Rating:</label>
+            <select id="reviewRating" class="input-field">
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Good</option>
+              <option value="3">3 - Average</option>
+              <option value="2">2 - Poor</option>
+              <option value="1">1 - Terrible</option>
+            </select>
+          </div>
+          <textarea id="reviewComment" class="input-field" placeholder="Write your review here..." rows="4"></textarea>
+          <button onclick="submitReview()" class="btn-primary">Submit Review</button>
+          <div id="reviewError" class="error-message"></div>
+          <div id="reviewSuccess" class="success-message"></div>
+        </div>
+        <div class="reviews-section">
+          <h3>All Reviews</h3>
+          <div id="reviewsList" class="reviews-list"></div>
+          <div id="reviewsLoading" class="loading" style="display:none;">Loading reviews...</div>
+          <div id="reviewsEmpty" class="empty-state" style="display:none;">No reviews yet. Be the first to review!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+// --- Inlined app.js ---
+const API_CONFIG = { MOVIE_SERVICE: 'https://joan.tugastst.my.id', WATCHLIST_SERVICE: '' };
+let currentUser = null; let allMovies = []; let filteredMovies = []; let currentMovie = null;
+document.addEventListener('DOMContentLoaded', () => { checkAuth(); });
+function checkAuth(){ const s=localStorage.getItem('currentUser'); if(s){ currentUser=JSON.parse(s); showMainContent(); } else { showAuthSection(); } }
+function showAuthSection(){ document.getElementById('authSection').style.display='block'; document.getElementById('mainContent').style.display='none'; document.getElementById('navUser').style.display='none'; }
+function showMainContent(){ document.getElementById('authSection').style.display='none'; document.getElementById('mainContent').style.display='block'; document.getElementById('navUser').style.display='flex'; document.getElementById('userNameDisplay').textContent=`Hello, ${currentUser.name}!`; loadMovies(); loadWatchlist(); }
+function showTab(tab){ const loginForm=document.getElementById('loginForm'); const registerForm=document.getElementById('registerForm'); const tabs=document.querySelectorAll('.tab-btn'); tabs.forEach(t=>t.classList.remove('active')); if(tab==='login'){ loginForm.classList.add('active'); registerForm.classList.remove('active'); tabs[0].classList.add('active'); } else { registerForm.classList.add('active'); loginForm.classList.remove('active'); tabs[1].classList.add('active'); } clearErrors(); }
+async function register(){ const name=document.getElementById('registerName').value.trim(); const err=document.getElementById('registerError'); const ok=document.getElementById('registerSuccess'); err.textContent=''; ok.textContent=''; if(!name){ err.textContent='Nama tidak boleh kosong!'; return;} try{ const resp=await fetch(`${API_CONFIG.WATCHLIST_SERVICE}/users`,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name})}); if(!resp.ok) throw new Error('Gagal mendaftar'); const user=await resp.json(); ok.textContent='Pendaftaran berhasil! Silakan login.'; document.getElementById('registerName').value=''; setTimeout(()=>{ showTab('login'); document.getElementById('loginName').value=name; },1500); }catch(e){ err.textContent='Gagal mendaftar. Silakan coba lagi.'; console.error(e);} }
+async function login(){ const name=document.getElementById('loginName').value.trim(); const err=document.getElementById('loginError'); err.textContent=''; if(!name){ err.textContent='Nama tidak boleh kosong!'; return;} try{ const resp=await fetch(`${API_CONFIG.WATCHLIST_SERVICE}/users`); if(!resp.ok) throw new Error('Gagal mengambil data user'); const users=await resp.json(); const user=users.find(u=>u.name.toLowerCase()===name.toLowerCase()); if(!user){ err.textContent='User tidak ditemukan. Silakan daftar terlebih dahulu.'; return;} currentUser=user; localStorage.setItem('currentUser', JSON.stringify(user)); showMainContent(); showToast('Login berhasil!'); }catch(e){ err.textContent='Gagal login. Silakan coba lagi.'; console.error(e);} }
+function logout(){ currentUser=null; localStorage.removeItem('currentUser'); allMovies=[]; filteredMovies=[]; showAuthSection(); showToast('Logout berhasil!'); }
+function clearErrors(){ document.getElementById('loginError').textContent=''; document.getElementById('registerError').textContent=''; document.getElementById('registerSuccess').textContent=''; }
+function showContent(section){ const tabs=document.querySelectorAll('.content-tab-btn'); tabs.forEach(t=>t.classList.remove('active')); if(section==='catalog'){ document.getElementById('catalogSection').classList.add('active'); document.getElementById('watchlistSection').classList.remove('active'); tabs[0].classList.add('active'); } else { document.getElementById('watchlistSection').classList.add('active'); document.getElementById('catalogSection').classList.remove('active'); tabs[1].classList.add('active'); loadWatchlist(); } }
+async function loadMovies(){ const grid=document.getElementById('movieGrid'); const loading=document.getElementById('movieLoading'); const err=document.getElementById('movieError'); loading.style.display='block'; grid.innerHTML=''; err.textContent=''; try{ const resp=await fetch(`${API_CONFIG.MOVIE_SERVICE}/movies`); if(!resp.ok) throw new Error('Gagal mengambil data movie'); const data=await resp.json(); allMovies=data.data||[]; filteredMovies=[...allMovies]; displayMovies(filteredMovies); loading.style.display='none'; }catch(e){ loading.style.display='none'; err.textContent='Gagal memuat movie catalog. Silakan coba lagi.'; console.error(e);} }
+function displayMovies(movies){ const grid=document.getElementById('movieGrid'); grid.innerHTML=''; if(movies.length===0){ grid.innerHTML='<div class="empty-state">Tidak ada movie ditemukan.</div>'; return;} movies.forEach(m=>{ const card=createMovieCard(m,false); grid.appendChild(card); }); }
+function createMovieCard(movie,isWatchlist=false){ const card=document.createElement('div'); card.className='movie-card'; card.innerHTML=`<div class="movie-poster" onclick="openReviewModal(${movie.id})" style="cursor:pointer;"><img src="${movie.poster||'https://via.placeholder.com/300x450?text=No+Image'}" alt="${movie.title}" onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'"><div class="review-overlay"><span class="review-icon">💬 View Reviews</span></div></div><div class="movie-info"><h3 class="movie-title" onclick="openReviewModal(${movie.id})" style="cursor:pointer;">${movie.title}</h3><p class="movie-year">${movie.year} • ${movie.genre.join(', ')}</p><p class="movie-director">Director: ${movie.director}</p><div class="movie-rating"><span class="rating-star">⭐</span><span class="rating-value">${movie.rating}</span></div><p class="movie-description">${movie.description}</p>${!isWatchlist?`<button onclick="addToWatchlist(${movie.id}); event.stopPropagation();" class="btn-add-watchlist">+ Add to Watchlist</button>`:`<span class="watchlist-badge">In Your Watchlist</span>`}</div>`; return card; }
+function searchMovies(){ const q=document.getElementById('searchInput').value.toLowerCase(); filteredMovies=!q?[...allMovies]:allMovies.filter(m=> m.title.toLowerCase().includes(q)|| m.director.toLowerCase().includes(q)|| m.genre.some(g=>g.toLowerCase().includes(q)) ); displayMovies(filteredMovies); }
+async function addToWatchlist(movieId){ if(!currentUser){ showToast('Silakan login terlebih dahulu!','error'); return;} try{ const resp=await fetch(`${API_CONFIG.WATCHLIST_SERVICE}/watchlist`,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ userId:currentUser.id, movieId:String(movieId) })}); if(!resp.ok) throw new Error('Gagal menambahkan ke watchlist'); showToast('Movie berhasil ditambahkan ke watchlist!','success'); }catch(e){ showToast('Gagal menambahkan ke watchlist. Silakan coba lagi.','error'); console.error(e);} }
+async function loadWatchlist(){ if(!currentUser) return; const grid=document.getElementById('watchlistGrid'); const loading=document.getElementById('watchlistLoading'); const err=document.getElementById('watchlistError'); const empty=document.getElementById('watchlistEmpty'); loading.style.display='block'; grid.innerHTML=''; err.textContent=''; empty.style.display='none'; try{ const resp=await fetch(`${API_CONFIG.WATCHLIST_SERVICE}/watchlist/${currentUser.id}/full`); if(!resp.ok) throw new Error('Gagal mengambil watchlist'); const data=await resp.json(); loading.style.display='none'; if(data.length===0){ empty.style.display='block'; return;} data.forEach(item=>{ if(item.movie){ const card=createMovieCard(item.movie,true); grid.appendChild(card);} }); }catch(e){ loading.style.display='none'; err.textContent='Gagal memuat watchlist. Silakan coba lagi.'; console.error(e);} }
+function showToast(msg,type='success'){ const t=document.getElementById('toast'); t.textContent=msg; t.className=`toast ${type} show`; setTimeout(()=>{ t.classList.remove('show'); },3000); }
+async function openReviewModal(movieId){ currentMovie=allMovies.find(m=>m.id===movieId); if(!currentMovie) return; const modal=document.getElementById('reviewModal'); const title=document.getElementById('modalMovieTitle'); const info=document.getElementById('modalMovieInfo'); title.textContent=`Reviews for ${currentMovie.title}`; info.innerHTML=`<div class="modal-movie-details"><img src="${currentMovie.poster||'https://via.placeholder.com/150x225?text=No+Image'}" alt="${currentMovie.title}" onerror="this.src='https://via.placeholder.com/150x225?text=No+Image'"><div class="modal-movie-text"><h3>${currentMovie.title}</h3><p>${currentMovie.year} • ${currentMovie.genre.join(', ')}</p><p>Director: ${currentMovie.director}</p><div class="movie-rating"><span class="rating-star">⭐</span><span class="rating-value">${currentMovie.rating}</span></div></div></div>`; modal.style.display='block'; document.body.style.overflow='hidden'; document.getElementById('reviewRating').value='5'; document.getElementById('reviewComment').value=''; document.getElementById('reviewError').textContent=''; document.getElementById('reviewSuccess').textContent=''; await loadReviews(movieId); }
+function closeReviewModal(){ const modal=document.getElementById('reviewModal'); modal.style.display='none'; document.body.style.overflow='auto'; currentMovie=null; }
+window.onclick=function(e){ const modal=document.getElementById('reviewModal'); if(e.target===modal){ closeReviewModal(); } }
+async function loadReviews(movieId){ const list=document.getElementById('reviewsList'); const loading=document.getElementById('reviewsLoading'); const empty=document.getElementById('reviewsEmpty'); list.innerHTML=''; loading.style.display='block'; empty.style.display='none'; try{ const resp=await fetch(`${API_CONFIG.MOVIE_SERVICE}/reviews/movie/${movieId}`); if(!resp.ok) throw new Error('Failed to load reviews'); const data=await resp.json(); const reviews=data.data||[]; loading.style.display='none'; if(reviews.length===0){ empty.style.display='block'; return;} reviews.forEach(rv=>{ const card=document.createElement('div'); card.className='review-card'; const d=new Date(rv.createdAt).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}); card.innerHTML=`<div class='review-header'><div class='review-user'><span class='review-username'>👤 ${rv.username}</span><span class='review-date'>${d}</span></div><div class='review-rating'><span class='rating-star'>⭐</span><span class='rating-value'>${rv.rating}</span></div></div><div class='review-comment'>${rv.comment||'No comment provided.'}</div>`; list.appendChild(card); }); }catch(e){ loading.style.display='none'; list.innerHTML='<div class="error-message">Failed to load reviews. Please try again.</div>'; console.error(e);} }
+async function submitReview(){ if(!currentUser){ showToast('Please login first!','error'); return;} if(!currentMovie) return; const rating=parseInt(document.getElementById('reviewRating').value); const comment=document.getElementById('reviewComment').value.trim(); const err=document.getElementById('reviewError'); const ok=document.getElementById('reviewSuccess'); err.textContent=''; ok.textContent=''; if(!comment){ err.textContent='Please write a comment for your review.'; return;} try{ const resp=await fetch(`${API_CONFIG.MOVIE_SERVICE}/reviews`,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ movieId:currentMovie.id, userId:currentUser.id, username:currentUser.name, rating, comment })}); if(!resp.ok) throw new Error('Failed to submit review'); ok.textContent='Review submitted successfully!'; document.getElementById('reviewRating').value='5'; document.getElementById('reviewComment').value=''; await loadReviews(currentMovie.id); showToast('Review added successfully!','success'); }catch(e){ err.textContent='Failed to submit review. Please try again.'; console.error(e);} }
+  </script>
+</body>
+</html>
