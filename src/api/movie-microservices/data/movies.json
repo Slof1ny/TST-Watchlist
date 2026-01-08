@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "The Shawshank Redemption",
+    "genre": [
+      "Drama"
+    ],
+    "year": 1994,
+    "rating": 9.3,
+    "director": "Frank Darabont",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "poster": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+  },
+  {
+    "id": 2,
+    "title": "The Godfather",
+    "genre": [
+      "Crime",
+      "Drama"
+    ],
+    "year": 1972,
+    "rating": 9.2,
+    "director": "Francis Ford Coppola",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.",
+    "poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "The Dark Knight",
+    "genre": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "year": 2008,
+    "rating": 9,
+    "director": "Christopher Nolan",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Pulp Fiction",
+    "genre": [
+      "Crime",
+      "Drama"
+    ],
+    "year": 1994,
+    "rating": 8.9,
+    "director": "Quentin Tarantino",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "poster": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Inception",
+    "genre": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "year": 2010,
+    "rating": 8.8,
+    "director": "Christopher Nolan",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "poster": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Ber.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Interstellar",
+    "genre": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "year": 2014,
+    "rating": 8.6,
+    "director": "Christopher Nolan",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Parasite",
+    "genre": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "year": 2019,
+    "rating": 8.5,
+    "director": "Bong Joon-ho",
+    "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Spider-Man: No Way Home",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "year": 2021,
+    "rating": 8.3,
+    "director": "Jon Watts",
+    "description": "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear.",
+    "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Avengers: Endgame",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "year": 2019,
+    "rating": 8.4,
+    "director": "Anthony Russo, Joe Russo",
+    "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more.",
+    "poster": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Dune",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "year": 2021,
+    "rating": 8,
+    "director": "Denis Villeneuve",
+    "description": "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset in the galaxy.",
+    "poster": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Oppenheimer",
+    "genre": [
+      "Drama",
+      "Biography"
+    ],
+    "year": 2023,
+    "rating": 8.9,
+    "director": "Christopher Nolan",
+    "description": "The story of American scientist J. Robert Oppenheimer",
+    "poster": ""
+  }
+]

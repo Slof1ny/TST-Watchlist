@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: huga-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Mount SSL certificates (adjust path to your actual certificate location)
+      - /etc/letsencrypt/live/huga.tugastst.my.id/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/huga.tugastst.my.id/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

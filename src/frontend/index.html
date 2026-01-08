@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watchlist - Huga</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🎬 Movie Watchlist</h1>
+            </div>
+            <div class="nav-user" id="navUser" style="display: none;">
+                <span id="userNameDisplay"></span>
+                <button onclick="logout()" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Section -->
+    <div id="authSection" class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                    <button class="tab-btn" onclick="showTab('register')">Daftar</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form active">
+                    <h2>Login</h2>
+                    <p class="auth-desc">Masukkan nama Anda untuk login</p>
+                    <input type="text" id="loginName" placeholder="Nama Anda" class="input-field">
+                    <button onclick="login()" class="btn-primary">Login</button>
+                    <div id="loginError" class="error-message"></div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form">
+                    <h2>Daftar Akun Baru</h2>
+                    <p class="auth-desc">Masukkan nama Anda untuk mendaftar</p>
+                    <input type="text" id="registerName" placeholder="Nama Anda" class="input-field">
+                    <button onclick="register()" class="btn-primary">Daftar</button>
+                    <div id="registerError" class="error-message"></div>
+                    <div id="registerSuccess" class="success-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="main-content" style="display: none;">
+        <div class="container">
+            <!-- Tabs -->
+            <div class="content-tabs">
+                <button class="content-tab-btn active" onclick="showContent('catalog')">
+                    📽️ Movie Catalog
+                </button>
+                <button class="content-tab-btn" onclick="showContent('watchlist')">
+                    ⭐ My Watchlist
+                </button>
+            </div>
+
+            <!-- Movie Catalog -->
+            <div id="catalogSection" class="content-section active">
+                <div class="section-header">
+                    <h2>Movie Catalog</h2>
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search movies..." 
+                            class="input-field"
+                            onkeyup="searchMovies()"
+                        >
+                    </div>
+                </div>
+                
+                <div id="movieGrid" class="movie-grid">
+                    <!-- Movies will be loaded here -->
+                </div>
+                
+                <div id="movieLoading" class="loading">Loading movies...</div>
+                <div id="movieError" class="error-message"></div>
+            </div>
+
+            <!-- Watchlist Section -->
+            <div id="watchlistSection" class="content-section">
+                <div class="section-header">
+                    <h2>My Watchlist</h2>
+                    <button onclick="loadWatchlist()" class="btn-secondary">🔄 Refresh</button>
+                </div>
+                
+                <div id="watchlistGrid" class="movie-grid">
+                    <!-- Watchlist will be loaded here -->
+                </div>
+                
+                <div id="watchlistLoading" class="loading">Loading watchlist...</div>
+                <div id="watchlistError" class="error-message"></div>
+                <div id="watchlistEmpty" class="empty-state" style="display: none;">
+                    <p>Your watchlist is empty. Add some movies from the catalog!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalMovieTitle">Movie Reviews</h2>
+                <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Movie Info -->
+                <div id="modalMovieInfo" class="modal-movie-info"></div>
+                
+                <!-- Add Review Section -->
+                <div class="add-review-section">
+                    <h3>Add Your Review</h3>
+                    <div class="rating-input">
+                        <label>Rating:</label>
+                        <select id="reviewRating" class="input-field">
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Good</option>
+                            <option value="3">3 - Average</option>
+                            <option value="2">2 - Poor</option>
+                            <option value="1">1 - Terrible</option>
+                        </select>
+                    </div>
+                    <textarea 
+                        id="reviewComment" 
+                        class="input-field" 
+                        placeholder="Write your review here..."
+                        rows="4"
+                    ></textarea>
+                    <button onclick="submitReview()" class="btn-primary">Submit Review</button>
+                    <div id="reviewError" class="error-message"></div>
+                    <div id="reviewSuccess" class="success-message"></div>
+                </div>
+                
+                <!-- Reviews List -->
+                <div class="reviews-section">
+                    <h3>All Reviews</h3>
+                    <div id="reviewsList" class="reviews-list">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+                    <div id="reviewsLoading" class="loading" style="display: none;">Loading reviews...</div>
+                    <div id="reviewsEmpty" class="empty-state" style="display: none;">No reviews yet. Be the first to review!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

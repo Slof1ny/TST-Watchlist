@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "movieId": 1,
+    "userId": 1,
+    "username": "joan",
+    "rating": 5,
+    "comment": "Masterpiece! One of the greatest films ever made.",
+    "createdAt": "2025-12-01T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "movieId": 3,
+    "userId": 2,
+    "username": "agus",
+    "rating": 5,
+    "comment": "Heath Ledger's Joker is legendary!",
+    "createdAt": "2025-12-02T14:30:00Z"
+  },
+  {
+    "id": 3,
+    "movieId": 5,
+    "userId": 1,
+    "username": "huga",
+    "rating": 4,
+    "comment": "Mind-bending plot, loved every minute of it.",
+    "createdAt": "2025-12-03T09:15:00Z"
+  },
+  {
+    "id": 4,
+    "movieId": 3,
+    "userId": 5,
+    "username": "siti",
+    "rating": 5,
+    "comment": "Great movie!",
+    "createdAt": "2026-01-02T09:32:14.866Z"
+  }
+]
